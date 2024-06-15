@@ -25,7 +25,7 @@ The system employs a straightforward decision-making process managed by AWS:
 - The LED indicator in the window provides a continuous visual status.
 
 ### Software Design
-- **Controller**: The Raspberry Pi reads the sensor and sends status messages every 10 minutes to AWS, also controlling the LED color.
+- **Controller**: The ESP32 reads the sensor and sends status messages every 7 minutes to AWS, also controlling the LED color.
 - **AWS Processing**: AWS API Gateway and Lambda functions handle the logic and alerting:
   - **Sensing Lambda**: Interprets the door status and triggers alerts based on the time of day.
   - **Monitoring Lambda**: Ensures the Sensing Lambda is operational and sends alerts if it fails.
