@@ -13,7 +13,7 @@ The sensor system will communicate the chicken door status in two primary ways:
 2. **LED Indicator**: An LED in the coop window will illuminate red when the door is open and green when it is closed, providing a clear visual status at all times.
 
 ### Components
-- **Controller**: Raspberry Pi 4b
+- **Controller**: An ESP32 microcontroller running micropython
 - **Sensor**: Infrared Slotted Optical Optocoupler
 - **Indicator**: 10mm LED bulb
 - **AWS Account**: For handling logic and text messaging
