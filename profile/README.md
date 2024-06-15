@@ -1,6 +1,6 @@
 ## Introduction
 
-This document outlines the design and implementation of a passive sensor system for monitoring the status of a chicken coop door using a Raspberry Pi 4b and Amazon Web Services (AWS). The system aims to provide real-time notifications about the door's open or closed status through text messages and visual indicators, ensuring the safety and security of the chickens without modifying the door mechanism or the chickens themselves.
+This document outlines the design and implementation of a passive sensor system for monitoring the status of a chicken coop door using an ESP32 microcontroller and Amazon Web Services (AWS). The system aims to provide real-time notifications about the door's open or closed status through text messages and visual indicators, ensuring the safety and security of the chickens without modifying the door mechanism or the chickens themselves.
 
 ### Ground Rules and Assumptions
 - The chicken door open/close mechanism will remain unmodified.
