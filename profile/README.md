@@ -37,6 +37,3 @@ The primary goal of this project is to create a passive sensor system that accur
 
 The ESP32 sends status updates every 45 minutes to ensure continuous monitoring and act as a keep-alive signal. AWS Lambda functions process these updates and compare them with the calculated sunrise and sunset times. Alerts are sent if the door’s status is not as expected. The LED in the coop window provides a constant visual status update, ensuring immediate local awareness of the door’s condition.
 
-### Conclusion
-
-The FarmLite Automatic Chicken Coop Door Sensor System is a comprehensive solution for monitoring the status of a chicken coop door. By combining robust hardware components with advanced cloud-based processing, it ensures the safety and security of the chickens through timely notifications and clear visual indicators. This system provides peace of mind to users, knowing that their chickens are protected without the need for constant manual checks.
