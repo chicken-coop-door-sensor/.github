@@ -1,51 +1,39 @@
-# Introduction to the Chicken Coop Door Sensor System
+## Introduction to the FarmLite Automatic Chicken Coop Door Sensor System
 
-Ensuring the safety and security of chickens in a coop requires constant vigilance, particularly when it comes to the opening and closing of the coop door. An open door at night can expose chickens to predators, while a closed door during the day can restrict their movement. To address these concerns, we have developed a passive sensor system for monitoring the status of the FarmLite Chicken Coop Door. This system leverages modern technology to provide real-time notifications and visual indicators about the door's status without modifying the door mechanism or the chickens themselves.
+Ensuring the safety and security of chickens in a coop involves meticulous attention to the status of the coop door. An open door at night exposes chickens to potential predators, while a closed door during the day can disrupt their natural behavior. The FarmLite Automatic Chicken Coop Door Sensor System is designed to address these concerns by providing real-time monitoring and notifications of the door’s status. This system leverages an ESP32 microcontroller, infrared sensors, LEDs, and Amazon Web Services (AWS) to deliver a reliable and efficient solution without modifying the door mechanism or the chickens.
 
-## Objectives
+### Purpose and Scope
 
-The primary objective of the Chicken Coop Door Sensor system is to enhance the security of the chicken coop through automated monitoring. The system aims to:
-1. Provide real-time status updates on the coop door.
-2. Send notifications in the event of a failure to open or close the door at the appropriate times.
-3. Maintain a simple and non-intrusive design that does not alter the existing door mechanism or require any modifications to the chickens.
+The primary goal of this project is to create a passive sensor system that accurately detects and reports the status of the FarmLite Chicken Coop Door. By using a combination of local indicators and remote notifications, the system ensures that users are promptly informed of any issues related to the door’s operation. The system is designed to be non-intrusive, requiring no modifications to the existing door mechanism or the chickens themselves. 
 
-## Environmental and Software Assumptions
+### Key Features
 
-To ensure the system operates effectively, the following assumptions are made:
-- The chicken coop door's existing open/close mechanism will remain unchanged.
-- The sensor system will be passive, meaning it will not actively control the door but only monitor its status.
-- No modifications to the chickens, such as chips or leg bracelets, will be made.
-- All times will be based on the `America/Chicago` (US Central Time) timezone.
-- Latitude 35.4834 and Longitude -86.4603 (Shelbyville, TN) will be used for sunrise and sunset calculations.
+1. **Real-Time Status Monitoring**: The system continuously monitors the door's open or closed status using an infrared slotted optical optocoupler sensor connected to an ESP32 microcontroller.
+2. **Visual Indicators**: A 10mm LED bulb installed in the coop window provides a clear visual status of the door. The LED is green when the door is closed and red when the door is open. If the LED is off, it indicates a malfunction in the system.
+3. **Automated Text Alerts**: AWS Lambda functions handle decision-making processes, sending text alerts to the user in case of any failures. Alerts are sent if the door remains open past sunset or if it fails to open by sunrise.
+4. **Cloud-Based Processing**: The ESP32 controller sends status updates to AWS, where Lambda functions process the data, compare it with local sunrise and sunset times, and trigger alerts as necessary.
+5. **Sunrise and Sunset Calculations**: The system uses the US Naval Observatory Clock API to retrieve accurate daily sunrise and sunset times based on the geographical coordinates of Shelbyville, TN.
 
-## System Components
+### Environmental and Software Assumptions
 
-The system comprises the following key components:
-- **ESP32 Controller**: A microcontroller running Micropython, responsible for reading the sensor, sending status messages, and controlling the local LED indicator.
-- **Infrared Slotted Optical Optocoupler**: A sensor used to detect the open or closed status of the door.
-- **10mm LED Bulb**: An indicator light installed in the coop window to visually display the door status.
-- **Amazon Web Services (AWS) Account**: Utilized for handling the logic and text messaging through Lambda functions and other AWS services.
+- The chicken coop door mechanism remains unmodified.
+- The sensor operates passively, without influencing the door’s movement.
+- No modifications are made to the chickens, such as installing chips or leg bracelets.
+- The system operates in the US Central Time zone, specifically for Shelbyville, TN (Latitude 35.4834, Longitude -86.4603).
+- The ESP32 microcontroller reports only the door status.
+- AWS handles the bulk of the logic and text messaging services.
 
-## Status Notification Logic
+### System Components
 
-The system communicates the status of the chicken coop door through two main channels:
-- **Text Alerts**: Text messages are sent under specific failure conditions, such as if the door fails to close at sunset or fails to open at sunrise.
-- **LED Indicator**: An LED light in the coop window provides a visual status indicator. The LED is always illuminated, showing red when the door is open and green when it is closed. If the light is off, it indicates a malfunction in the system.
+- **ESP32 Microcontroller**: Acts as the controller, reading sensor data, sending status messages, and controlling the LED indicator.
+- **Infrared Slotted Optical Optocoupler**: Detects the door's open or closed status.
+- **10mm LED Bulb**: Provides a visual indication of the door's status.
+- **Amazon Web Services (AWS)**: Manages data processing, decision making, and alerting through Lambda functions and DynamoDB.
 
-## Controller’s Role
+### Status Notification Logic
 
-The ESP32 controller has three primary responsibilities:
-1. **Reading the Sensor**: Continuously monitors the status of the coop door.
-2. **Sending Status Messages**: Reports the door status as either "open" or "closed" approximately every 45 minutes via an HTTP REST API message.
-3. **Setting the Local LED**: Controls the LED indicator to reflect the current door status.
+The ESP32 sends status updates every 45 minutes to ensure continuous monitoring and act as a keep-alive signal. AWS Lambda functions process these updates and compare them with the calculated sunrise and sunset times. Alerts are sent if the door’s status is not as expected. The LED in the coop window provides a constant visual status update, ensuring immediate local awareness of the door’s condition.
 
-## AWS Role
+### Conclusion
 
-AWS handles the majority of the system's processing tasks:
-- **Sensing Lambda**: This function processes incoming status messages and determines if alerts need to be sent based on the time of day and the door status.
-- **Twilight Lambda**: Queries the US Naval Observatory Clock API daily to retrieve and store sunrise and sunset times in a DynamoDB table.
-- **Monitoring Lambda**: Monitors the execution of the other Lambda functions to ensure they are running error-free and sends alerts if any issues are detected.
-
-## Conclusion
-
-The Chicken Coop Door Sensor system is a robust and reliable solution for monitoring the status of a FarmLite Chicken Coop Door. By providing real-time notifications and visual indicators, it enhances the security and safety of the chicken coop, ensuring peace of mind for chicken owners. This system exemplifies the integration of modern technology with traditional farming practices, offering an innovative approach to livestock management.
+The FarmLite Automatic Chicken Coop Door Sensor System is a comprehensive solution for monitoring the status of a chicken coop door. By combining robust hardware components with advanced cloud-based processing, it ensures the safety and security of the chickens through timely notifications and clear visual indicators. This system provides peace of mind to users, knowing that their chickens are protected without the need for constant manual checks.
