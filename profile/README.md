@@ -92,7 +92,6 @@ The project consists of multiple repositories, each handling different aspects o
 - `C2DS-aws-lambda-coop-controller-handler`
 - `C2DS-aws-lambda-query-state`
 - `C2DS-aws-lambda-set-twilight-times`
-- `C2DS-aws-lambda-upgrade-handler`
 - `C2DS-esp32-coop-controller`
 - `C2DS-esp32-coop-snooper`
 
