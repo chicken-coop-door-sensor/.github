@@ -96,3 +96,13 @@ The project consists of multiple repositories, each handling different aspects o
 - `C2DS-esp32-coop-snooper`
 
 This comprehensive system ensures the safety and security of your chickens by providing real-time status notifications and visual indicators, leveraging the power of IoT and cloud computing without requiring manual intervention or modifications to your existing setup.
+
+
+![PXL_20240726_132015023](https://github.com/user-attachments/assets/115ca509-60b3-46cf-9cc3-1c7393f481d5)
+![PXL_20240726_132000345](https://github.com/user-attachments/assets/2fa03872-ad8a-41d7-8509-0b2c214086c4)
+![PXL_20240726_131955243](https://github.com/user-attachments/assets/ac3ff266-f5b7-414c-813d-cea4fbefd6b7)
+![PXL_20240726_131948964](https://github.com/user-attachments/assets/e7b42aa2-f4b6-4256-8b5d-dd3d7a7d16ad)
+![PXL_20240726_131940950](https://github.com/user-attachments/assets/e9981383-1137-4bf4-9004-8d61c45eff86)
+![PXL_20240726_131933315](https://github.com/user-attachments/assets/f2694349-5fca-4247-a6f1-e74599311c86)
+![PXL_20240726_131926088](https://github.com/user-attachments/assets/7808dacc-809b-4b01-8ee8-d6acc264b597)
+
